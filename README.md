@@ -10,6 +10,7 @@
 
 ## Инструкция по установке
 1. Добавляем в настройки темы
+```
 	<fieldset>
 		<legend>ГЕО модуль</legend>
 		<table>
@@ -35,7 +36,10 @@
 			</tr>
 		</table>
 	</fieldset>
+  ```
+
   2. Добавляем в шапку
+  ```
     {% if settings.geo_active and settings.header_geo %}
       <script>
         var geo_active = {% if settings.geo_active %}true{% else %}false{% endif %};
@@ -55,12 +59,16 @@
 		{% endif %}
 	  </div>
 	{% endif %}
+```
 2.1 Подключаем 
+```
 	<script>
 		var geo_url = '{{ settings.geo_url }}';
 		var account_phone = "{{ account.phone }}";
 	</script>
+```
 2.2 Добавить в карточку товара
+```
 	{% if settings.product_geo == '1' %}
 	  <script>ProductJSON = {{ product | json }};</script>
 	  <div class="prod_properties">
@@ -73,15 +81,18 @@
 	  </div>
 	  <div class="js-product-dimensions" data-product-dimensions="{{ product.dimensions.width }}x{{ product.dimensions.depth }}x{{ product.dimensions.height }}"></div>
 	{% endif %}
+```
 3. Подключаем modul-geo.js
 4. Подключаем modul-geo.css
 5. Подключаем стили из файла styles.css
 6. Подключаем скрипт из файла script.js
 7. Устанавливаем модуль "Яндекс Доставка" https://www.insales.ru/collection/apps/product/yandex-dostavka
 8. Настраиваем аккаунт в личном кабинете "Яндекс Доставка" и получаем ключи доступа
-9. Настраиваем модуль, указывая включи, полученные в личном кабинете "Яндекс Доставка"
+9. Настраиваем модуль, указывая ключи, полученные в личном кабинете "Яндекс Доставка"
 ![Модуль расчета доставки с помощью "Яндекс Доставка" для InSales (Preview #5)](https://github.com/eZ4hUNt/insales-delivery-price-and-geo-module/blob/master/preview%20%235.jpg)
-![Модуль расчета доставки с помощью "Яндекс Доставка" для InSales (Preview #6)](https://github.com/eZ4hUNt/insales-delivery-price-and-geo-module/blob/master/preview%20%236.jpgg)
+![Модуль расчета доставки с помощью "Яндекс Доставка" для InSales (Preview #6)](https://github.com/eZ4hUNt/insales-delivery-price-and-geo-module/blob/master/preview%20%236.jpg)
+10. В скрипте *"modul-geo.js"* меняем *insales_id* в массиве *SiteDelivery => ydelivery => pickup => url*. Получить значение можно в настройках способов доставки, "Яндекс Доставка".
+![Модуль расчета доставки с помощью "Яндекс Доставка" для InSales (Preview #7)](https://github.com/eZ4hUNt/insales-delivery-price-and-geo-module/blob/master/preview%20%237.jpg)
 
 ## Дополнительные настройки
 1. Модуль учитывает вес и габариты товара. Если они не настроены, то исользуются значения по умолчанию, указанные в модуле "Яндекс Доставка"
